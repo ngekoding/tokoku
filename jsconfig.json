@@ -1,0 +1,16 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["resources/js/*"]
+        },
+        "types": ["unplugin-vue-define-options/macros-global"]
+    },
+    "vueCompilerOptions": {
+        "target": 3,
+        "plugins": [
+          "@vue-macros/volar/define-options"
+        ]
+    },
+    "exclude": ["node_modules", "public"]
+}
