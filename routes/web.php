@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransactionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -28,7 +29,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-    Route::get('/transactions', [ProfileController::class, 'edit'])->name('transactions');
+    Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions');
+    Route::get('/transactions/create', [TransactionController::class, 'create'])->name('transactions.create');
+    Route::post('/transactions/create', [TransactionController::class, 'store'])->name('transactions.store');
+    Route::delete('/transactions/{order}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
+
     Route::get('/customers', [ProfileController::class, 'edit'])->name('customers');
     Route::get('/items', [ProfileController::class, 'edit'])->name('items');
 
