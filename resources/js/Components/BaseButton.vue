@@ -38,7 +38,7 @@ const extraClass = computed(() => {
 
 <template>
     <button
-        class="inline-flex items-center border rounded-md font-semibold text-xs  uppercase tracking-widest transition ease-in-out duration-150"
+        class="inline-flex items-center justify-center border rounded-md font-semibold text-xs  uppercase tracking-widest transition ease-in-out duration-150"
         :class="[typeClass, extraClass]"
     >
         <slot />
