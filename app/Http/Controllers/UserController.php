@@ -42,12 +42,14 @@ class UserController extends Controller
             'name' => 'required|max:255',
             'email' => ['required', 'email', 'max:255', Rule::unique(User::class)],
             'password' => ['required', Rules\Password::defaults()],
+            'role' => 'required',
         ]);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
+            'role' => $request->role,
         ]);
 
         return Redirect::route('users.create');
@@ -89,10 +91,12 @@ class UserController extends Controller
             'name' => 'required|string|max:255',
             'email' => ['required', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
             'password' => ['required', Rules\Password::defaults()],
+            'role' => 'required',
         ]);
 
         $user->fill($request->only(['name', 'email']));
         $user->password = Hash::make($request->password);
+        $user->role = $request->role;
         $user->save();
 
         return Redirect::route('users.edit', [$user]);

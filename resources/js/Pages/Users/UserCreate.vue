@@ -8,6 +8,7 @@ import BaseButton from '@/Components/BaseButton.vue';
 import { mdiArrowLeft } from '@mdi/js';
 import BaseIcon from '@/Components/BaseIcon.vue';
 import Alert from '@/Components/Alert.vue';
+import Radio from '@/Components/Radio.vue';
 
 defineOptions({ layout: DefaultLayout });
 
@@ -93,6 +94,15 @@ const submit = () => {
                     />
 
                     <InputError class="mt-2" :message="form.errors.password" />
+                </div>
+
+                <div class="mt-4">
+                    <InputLabel for="role" value="Role" />
+
+                    <Radio v-model="form.role" value="staff" label="Staff" />
+                    <Radio v-model="form.role" value="super admin" label="Super Admin" />
+
+                    <InputError class="mt-2" :message="form.errors.role" />
                 </div>
 
                 <BaseButton
