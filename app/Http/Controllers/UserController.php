@@ -87,15 +87,19 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user): RedirectResponse
     {
+        if (!$request->filled('password')) {
+            unset($request['password']);
+        }
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => ['required', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
-            'password' => ['required', Rules\Password::defaults()],
+            'password' => ['sometimes', 'required', Rules\Password::defaults()],
             'role' => 'required',
         ]);
 
         $user->fill($request->only(['name', 'email', 'role']));
-        $user->password = Hash::make($request->password);
+        $request->has('password') && $user->password = Hash::make($request->password);
         $user->save();
 
         return Redirect::route('users.edit', [$user]);

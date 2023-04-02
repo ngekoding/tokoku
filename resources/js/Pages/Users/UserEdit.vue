@@ -90,13 +90,12 @@ const submit = () => {
 
                 <div class="mt-4">
                     <InputLabel for="password" value="Password" />
-
+                    <div class="text-xs text-gray-500">Make it blank to keep using old password</div>
                     <TextInput
                         id="password"
                         type="password"
                         class="mt-1 block w-full"
                         v-model="form.password"
-                        required
                         autocomplete="new-password"
                     />
 
