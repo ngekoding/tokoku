@@ -1,3 +1,3 @@
 # Tokoku
 
-Simple sales recording app built with Laravel.
+Simple Point of Sales (POS) app built with Laravel Breeze and Vue.
