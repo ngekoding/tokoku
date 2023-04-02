@@ -94,9 +94,8 @@ class UserController extends Controller
             'role' => 'required',
         ]);
 
-        $user->fill($request->only(['name', 'email']));
+        $user->fill($request->only(['name', 'email', 'role']));
         $user->password = Hash::make($request->password);
-        $user->role = $request->role;
         $user->save();
 
         return Redirect::route('users.edit', [$user]);
