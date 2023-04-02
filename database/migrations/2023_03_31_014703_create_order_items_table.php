@@ -21,11 +21,11 @@ return new class extends Migration
                   ->constrained()
                   ->cascadeOnDelete()
                   ->cascadeOnUpdate();
-            $table->integer('qty');
-            $table->decimal('price', 10, 2);
-            $table->decimal('discount', 10, 2);
-            $table->decimal('total', 10, 2);
-            $table->string('note');
+            $table->integer('qty')->default(0);
+            $table->decimal('price', 10, 2)->default(0);
+            $table->decimal('discount', 10, 2)->default(0);
+            $table->decimal('total', 10, 2)->default(0);
+            $table->string('note')->nullable();
             $table->timestamps();
         });
     }
