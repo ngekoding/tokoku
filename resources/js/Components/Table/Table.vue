@@ -47,6 +47,7 @@ const searchLocal = computed({
                 <slot name="default" />
             </tbody>
         </table>
+        <div v-if="!props.data.data.length" class="text-sm text-gray-400 text-center pt-4">No data available.</div>
     </div>
     <div class="p-4 flex justify-between items-center">
         <div class="text-sm text-gray-500">
