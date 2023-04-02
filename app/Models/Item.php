@@ -12,6 +12,17 @@ class Item extends Model
     use HasFactory, HasUuids;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'price',
+        'description'
+    ];
+
+    /**
      * Get the order items of the item.
      */
     public function orderItems(): HasMany

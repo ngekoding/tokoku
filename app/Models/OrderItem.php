@@ -12,6 +12,21 @@ class OrderItem extends Model
     use HasFactory, HasUuids;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'order_id',
+        'item_id',
+        'qty',
+        'price',
+        'discount',
+        'total',
+        'note'
+    ];
+
+    /**
      * Get the order that owns the order item.
      */
     public function order(): BelongsTo

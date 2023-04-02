@@ -13,6 +13,21 @@ class Order extends Model
     use HasFactory, HasUuids;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'code',
+        'date',
+        'customer_id',
+        'address',
+        'subtotal',
+        'discount',
+        'total'
+    ];
+
+    /**
      * Get the customer that owns the order.
      */
     public function customer(): BelongsTo

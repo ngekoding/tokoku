@@ -12,6 +12,17 @@ class Customer extends Model
     use HasFactory, HasUuids;
 
     /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    protected $fillable = [
+        'name',
+        'address',
+        'phone'
+    ];
+
+    /**
      * Get the orders of the customer.
      */
     public function orders(): HasMany
