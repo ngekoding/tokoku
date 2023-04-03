@@ -22,16 +22,19 @@ const navs = [
     {
         header: true,
         label: 'Settings',
+        allowedRoles: ['super admin']
     },
     {
         to: 'customers',
         label: 'Customer',
-        icon: mdiAccountOutline
+        icon: mdiAccountOutline,
+        allowedRoles: ['super admin']
     },
     {
         to: 'items',
         label: 'Item',
-        icon: mdiPackageVariantClosed
+        icon: mdiPackageVariantClosed,
+        allowedRoles: ['super admin']
     },
     {
         to: 'users',
