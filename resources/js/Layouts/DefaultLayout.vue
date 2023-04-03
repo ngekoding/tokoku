@@ -27,7 +27,7 @@ const showingNavigationDropdown = ref(false)
 <template>
     <div class="min-h-screen bg-gray-100 md:flex">
         <!-- Sidebar Navigation Menu -->
-        <div class="hidden md:block fixed w-[350px] h-screen bg-white border-r border-gray-200">
+        <div class="hidden md:block fixed w-[300px] h-screen bg-white border-r border-gray-200">
             <header class="flex items-center h-16 px-4 border-b border-gray-200">
                 <ApplicationLogo class="block h-9 w-auto fill-current text-gray-800" />
                 <h1 class="text-xl font-bold ml-2">{{ $page.props.appName }}</h1>
@@ -37,7 +37,7 @@ const showingNavigationDropdown = ref(false)
             </div>
         </div>
 
-        <header class="fixed left-0 right-0 h-16 px-4 flex items-center justify-between bg-white border-b border-gray-200 md:left-[350px]">
+        <header class="fixed left-0 right-0 h-16 px-4 flex items-center justify-between bg-white border-b border-gray-200 md:left-[300px]">
             <div class="flex items-center">
                 <ApplicationLogo class="block h-9 w-auto fill-current text-gray-800 mr-2 md:hidden" />
                 <h2 class="font-medium text-base text-gray-800 leading-none">
@@ -158,7 +158,7 @@ const showingNavigationDropdown = ref(false)
             </transition>
         </div>
 
-        <main class="pt-[85px] w-full md:pl-[350px]">
+        <main class="pt-[85px] pb-4 w-full md:pl-[300px]">
             <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
                 <slot></slot>
             </div>
