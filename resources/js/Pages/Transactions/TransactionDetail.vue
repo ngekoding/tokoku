@@ -53,10 +53,10 @@ defineProps({
                 class="flex items-center space-x-2 pt-4 first:pt-0"
             >
                 <div class="flex-grow">
-                    <div class="text-gray-800 font-medium text-lg">{{ orderItem.item.name }}</div>
-                    <div class="flex space-x-2">
+                    <div class="text-gray-800 font-medium text-lg leading-tight">{{ orderItem.item.name }}</div>
+                    <div class="flex flex-wrap gap-x-4 gap-y-1">
                         <div class="text-gray-500 text-sm">x{{ orderItem.qty }}</div>
-                        <div class="text-gray-500 text-sm pl-2">Discount: {{ formatCurrency(orderItem.discount) }}</div>
+                        <div class="text-gray-500 text-sm">Discount: {{ formatCurrency(orderItem.discount) }}</div>
                         <div v-if="orderItem.note" class="text-gray-500 text-sm pl-2">Note: {{ orderItem.note }}</div>
                     </div>
                 </div>
@@ -66,7 +66,7 @@ defineProps({
         <table class="w-full bg-gray-50 text-gray-700">
             <tr class="border-b border-gray-200">
                 <td class="px-4 py-2.5 border-r border-gray-200 text-right font-medium">Sub-total</td>
-                <td class="px-4 py-2.5 text-right w-[250px]">{{ formatCurrency(order.subtotal)  }}</td>
+                <td class="px-4 py-2.5 text-right sm:w-[250px]">{{ formatCurrency(order.subtotal)  }}</td>
             </tr>
             <tr class="border-b border-gray-200">
                 <td class="px-4 py-2.5 border-r border-gray-200 text-right font-medium">Discount</td>
