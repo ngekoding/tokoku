@@ -1,5 +1,5 @@
 <script setup>
-import navLinks from '@/nav';
+import { visibleLinks as navLinks } from '@/nav';
 import NavLink from '@/Components/NavLink.vue';
 import NavHeader from '@/Components/NavHeader.vue';
 </script>

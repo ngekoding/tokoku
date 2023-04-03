@@ -1,3 +1,5 @@
+import { computed } from 'vue';
+import { usePage } from '@inertiajs/vue3';
 import {
     mdiAccountOutline,
     mdiShieldAccountOutline,
@@ -6,7 +8,7 @@ import {
     mdiPackageVariantClosed,
  } from '@mdi/js';
 
-export default [
+const navs = [
     {
         to: 'dashboard',
         label: 'Dashboard',
@@ -34,6 +36,15 @@ export default [
     {
         to: 'users',
         label: 'User',
-        icon: mdiShieldAccountOutline
+        icon: mdiShieldAccountOutline,
+        allowedRoles: ['super admin']
     },
-]
+];
+
+export const visibleLinks = computed(() => {
+    return navs.filter(nav => {
+        return !nav.allowedRoles || (nav.allowedRoles && nav.allowedRoles.includes(usePage().props.auth.user.role));
+    });
+});
+
+export default navs;

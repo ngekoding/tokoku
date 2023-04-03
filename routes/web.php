@@ -37,12 +37,14 @@ Route::middleware('auth')->group(function () {
     Route::get('/customers', [ProfileController::class, 'edit'])->name('customers');
     Route::get('/items', [ProfileController::class, 'edit'])->name('items');
 
-    Route::get('/users', [UserController::class, 'index'])->name('users');
-    Route::get('/users/create', fn() => Inertia::render('Users/UserCreate'))->name('users.create');
-    Route::post('/users/create', [UserController::class, 'store'])->name('users.store');
-    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
-    Route::patch('/users/{user}/edit', [UserController::class, 'update'])->name('users.update');
-    Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::middleware('role:super admin')->group(function () {
+        Route::get('/users', [UserController::class, 'index'])->name('users');
+        Route::get('/users/create', fn() => Inertia::render('Users/UserCreate'))->name('users.create');
+        Route::post('/users/create', [UserController::class, 'store'])->name('users.store');
+        Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+        Route::patch('/users/{user}/edit', [UserController::class, 'update'])->name('users.update');
+        Route::delete('/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    });
 });
 
 require __DIR__.'/auth.php';
