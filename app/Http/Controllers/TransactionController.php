@@ -37,6 +37,16 @@ class TransactionController extends Controller
         ]);
     }
 
+    /**
+     * Show the specific transaction.
+     */
+    public function show(Order $order): Response
+    {
+        $order->load(['customer', 'orderItems.item']);
+
+        return Inertia::render('Transactions/TransactionDetail', compact('order'));
+    }
+
     public function create(): Response
     {
         return Inertia::render('Transactions/TransactionCreate', [

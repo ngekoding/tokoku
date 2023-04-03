@@ -32,6 +32,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/transactions', [TransactionController::class, 'index'])->name('transactions');
     Route::get('/transactions/create', [TransactionController::class, 'create'])->name('transactions.create');
     Route::post('/transactions/create', [TransactionController::class, 'store'])->name('transactions.store');
+    Route::get('/transactions/{order}', [TransactionController::class, 'show'])->name('transactions.show');
     Route::delete('/transactions/{order}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
 
     Route::get('/customers', [ProfileController::class, 'edit'])->name('customers');
