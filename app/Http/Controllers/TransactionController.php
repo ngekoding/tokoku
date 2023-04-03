@@ -33,7 +33,9 @@ class TransactionController extends Controller
 
         return Inertia::render('Transactions/TransactionList', [
             'transactions' => $transactions,
-            'filters' => $request->only(['search'])
+            'filters' => $request->only(['search']),
+            'canUpdate' => $request->user()->role == 'super admin',
+            'canDestroy' => $request->user()->role == 'super admin',
         ]);
     }
 

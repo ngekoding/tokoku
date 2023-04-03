@@ -33,7 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/transactions/create', [TransactionController::class, 'create'])->name('transactions.create');
     Route::post('/transactions/create', [TransactionController::class, 'store'])->name('transactions.store');
     Route::get('/transactions/{order}', [TransactionController::class, 'show'])->name('transactions.show');
-    Route::delete('/transactions/{order}', [TransactionController::class, 'destroy'])->name('transactions.destroy');
+    Route::delete('/transactions/{order}', [TransactionController::class, 'destroy'])
+        ->middleware('role:super admin')
+        ->name('transactions.destroy');
 
     Route::get('/customers', fn() => Inertia::render('UnderConstruction'))->name('customers');
     Route::get('/items', fn() => Inertia::render('UnderConstruction'))->name('items');

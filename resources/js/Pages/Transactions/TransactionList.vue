@@ -24,7 +24,9 @@ const props = defineProps({
     filters: {
         type: Object,
         default: () => ({})
-    }
+    },
+    canUpdate: Boolean,
+    canDestroy: Boolean,
 })
 
 const search = ref(props.filters.search)
@@ -87,6 +89,7 @@ const destroy = (id) => {
                         <BaseIcon :path="mdiEyeOutline" />
                     </BaseButton>
                     <BaseButton
+                        v-if="canUpdate"
                         type="success"
                         @click="router.get(route('transactions.edit', { id: transaction.id }))"
                         icon-only
@@ -94,6 +97,7 @@ const destroy = (id) => {
                         <BaseIcon :path="mdiPencilOutline" />
                     </BaseButton>
                     <BaseButton
+                        v-if="canDestroy"
                         type="danger"
                         @click="destroy(transaction.id)"
                         icon-only
