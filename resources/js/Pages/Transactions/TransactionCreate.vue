@@ -274,6 +274,8 @@ const submit = () => {
                     type="success"
                     class="mt-4 w-full"
                     @click="submit()"
+                    :disabled="form.processing"
+                    :loading="form.processing"
                 >
                     Save Transaction
                 </BaseButton>

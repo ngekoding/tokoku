@@ -1,5 +1,7 @@
 <script setup>
+import { mdiLoading } from '@mdi/js';
 import { computed } from 'vue';
+import BaseIcon from './BaseIcon.vue';
 
 const props = defineProps({
     type: {
@@ -16,6 +18,14 @@ const props = defineProps({
     withIcon: {
         type: Boolean,
         default: false,
+    },
+    loading: {
+        type: Boolean,
+        default: false,
+    },
+    loadingText: {
+        type: String,
+        default: 'Processing...'
     }
 })
 
@@ -31,8 +41,12 @@ const typeClasses = {
 const typeClass = computed(() => typeClasses[props.type]);
 const extraClass = computed(() => {
     if (props.iconOnly) return 'p-1';
-    if (props.withIcon) return 'pl-2 pr-3 py-1';
+    if (props.withIcon || props.loading) return 'pl-2 pr-3 py-1';
     return 'px-4 py-2';
+});
+
+const loadingTextLocal = computed(() => {
+    return props.iconOnly ? '' : props.loadingText;
 });
 </script>
 
@@ -41,6 +55,9 @@ const extraClass = computed(() => {
         class="inline-flex items-center justify-center border rounded-md font-semibold text-xs  uppercase tracking-widest transition ease-in-out duration-150"
         :class="[typeClass, extraClass]"
     >
-        <slot />
+        <slot v-if="!loading" />
+        <template v-else>
+            <BaseIcon :path="mdiLoading" class="animate-spin" /> {{ loadingTextLocal }}
+        </template>
     </button>
 </template>
