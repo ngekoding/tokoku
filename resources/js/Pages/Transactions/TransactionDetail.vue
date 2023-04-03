@@ -29,8 +29,9 @@ defineProps({
     </BaseButton>
 
     <div class="mt-2 bg-white overflow-hidden shadow-sm sm:rounded-lg">
-        <div class="p-4 border-b border-gray-100">
-            <div>{{  dayjs(order.date).format('LL') }}</div>
+        <div class="p-4 flex items-center justify-between border-b border-gray-100">
+            <div>{{ order.code }}</div>
+            <div>{{ dayjs(order.date).format('LL') }}</div>
         </div>
         <div class="p-4 border-b-2 border-gray-100 space-y-3">
             <div>
